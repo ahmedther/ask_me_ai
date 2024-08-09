@@ -1,0 +1,21 @@
+{
+  "translation": {
+    "appName": "Ask Me AI",
+    "languageEN": "English",
+    "languageAR": "Arabic",
+    "newConversation": "New Conversation",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "help": "Help/Support",
+    "contactUs": "Contact Us",
+    "about": "About",
+    "account": "Account",
+    "logout": "Logout",
+    "newConvHeading": "Ask Me Aything",
+    "textAreaPlaceHolder": "Start asking AI questions...",
+    "disclaimer": "Messages generated may display inaccurate info. so double-check.",
+    "languageToListen": null,
+
+    "footer": "Khaleel Surati INC. All rights reserved. Unauthorized reproduction or distribution of this material is prohibited."
+  }
+}

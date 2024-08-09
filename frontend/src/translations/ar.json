@@ -1,0 +1,21 @@
+{
+  "translation": {
+    "appName": "اسألني AI",
+    "languageEN": "الإنجليزية",
+    "languageAR": "العربية",
+    "newConversation": "محادثة جديدة",
+    "terms": "شروط الخدمة",
+    "privacy": "سياسة الخصوصية",
+    "help": "المساعدة والدعم",
+    "contactUs": "اتصل بنا",
+    "about": "عن",
+    "account": "الحساب",
+    "logout": "تسجيل الخروج",
+    "newConvHeading": "اسألني أي شيء",
+    "textAreaPlaceHolder": "ابدأ بطرح أسئلة حول AI...",
+    "disclaimer": "قد تعرض الرسائل المولدة معلومات غير دقيقة، لذا قم بالتحقق مرة أخرى",
+    "languageToListen": "ar-SA",
+
+    "footer": "شركة خلييل سوراتي INC. جميع الحقوق محفوظة. لا يسمح بإعادة إنتاج أو توزيع هذا المادة بدون إذن."
+  }
+}
