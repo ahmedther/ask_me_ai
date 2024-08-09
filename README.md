@@ -24,13 +24,14 @@ Docker installed on your machine.
 Node.js and npm installed.
 Installation
 Clone the repository:
-git clone https://github.com/yourusername/educational-ai-for-kids.git
+git clone https://github.com/ahmether/ask_me_ai.git
 cd educational-ai-for-kids
 
 Build and run the Docker containers:
 docker-compose up --build
 
-Access the application at http://localhost.
+Access the application at http://localhost:80
+
 Contributing
 We welcome contributions from the community! Please read our contributing guidelines for more information.
 
@@ -38,6 +39,6 @@ License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Contact
-For any questions or suggestions, feel free to open an issue or contact us at your-email@example.com.
+For any questions or suggestions, feel free to open an issue or contact us at aa10980@example.com.
 
 Feel free to customize this description further to fit your project’s specific details and requirements!
