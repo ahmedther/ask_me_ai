@@ -12,7 +12,7 @@ const useApi = () => {
 
   const reqAnswer = useCallback(
     async (id: string, question: string) => {
-      const eventSource = new EventSource(`${API_URL}/api/stream`, {
+      const eventSource = new EventSource(`${API_URL}/sse`, {
         withCredentials: true,
       });
 

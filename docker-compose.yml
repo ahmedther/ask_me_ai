@@ -7,6 +7,10 @@ services:
     container_name: ask_me_backend_container
     env_file:
       - /backend/.env
+    volumes:
+      - ./backend/:/backend
+    ports:
+      - 3000:3000
     depends_on:
       - redis
 
@@ -20,7 +24,7 @@ services:
       - /nginx/.env
     ports:
       - 80:80
-      - 3000:3000
+
     depends_on:
       - backend
 

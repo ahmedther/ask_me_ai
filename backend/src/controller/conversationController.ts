@@ -11,6 +11,11 @@ import { CHAT_PARAMETERS } from "../configs/env";
 export const questionController = async (req: Request, res: Response) => {
   const { content: question } = req.body;
 
+  if (question === undefined) {
+    res.status(400).json({ message: "Question not Sent" });
+    return;
+  }
+
   const content = `${CHAT_PARAMETERS}\n\n${question}`;
 
   const sessionID = `conversation:${req.sessionID}`;
@@ -46,4 +51,5 @@ export const streamController = (req: Request, res: Response) => {
 
 export const deleteConvController = (req: Request, res: Response) => {
   deleteConversations(`conversation:${req.sessionID}`);
+  res.sendStatus(204); // Send a "No Content" status code
 };

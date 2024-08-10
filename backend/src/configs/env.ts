@@ -12,8 +12,9 @@ const REDIS_PORT = Number(process.env.REDIS_PORT) || 6379;
 
 const REDIS_HOST = process.env.REDIS_HOST || "0.0.0.0";
 
-const REACT_CLIENT_URL =
-  process.env.REACT_CLIENT_URL || "http://localhost:3001";
+const REACT_CLIENT_URL = process.env.REACT_CLIENT_URL?.split(",") || [
+  "http://localhost",
+];
 
 const SECRET =
   process.env.SECRET ||

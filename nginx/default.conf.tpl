@@ -3,6 +3,7 @@ upstream app_server {
     server backend:${SERVE_BACKEND};
 }
 
+
 server {
     # Express backend
     listen ${LISTEN_PORT_BACKEND};
@@ -10,29 +11,93 @@ server {
     client_max_body_size 100m;
     client_body_buffer_size 100m;
 
-    access_log /var/log/nginx/ask_me_ai_backend_access.log;
+    #access_log /var/log/nginx/ask_me_ai_backend_access.log;
+    access_log /dev/stderr;
     error_log /dev/stderr;
 
-    client_body_timeout 7200s;
-    client_header_timeout 7200s;
-    keepalive_timeout 7200s;
-    send_timeout 7200s;
+    client_body_timeout 720s;
+    client_header_timeout 720s;
+    keepalive_timeout 720s;
+    send_timeout 720s;
 
     #location /static {
     #alias /backend/static;
     #}
 
+
+    
+
+    # variables like $host needs escape from envsubt so se double __var__ and later sh cmd  sed -i 's/__var__/$var/g' filename
+
+
     location /sse {
-        proxy_pass http://app_server;
-        proxy_set_header Connection '';
-        proxy_http_version 1.1;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header Host $host;
-        proxy_buffering off;  # Disable buffering for SSE
-        proxy_cache off;      # Disable caching for SSE
+        proxy_pass http://app_server/sse;
+        proxy_set_header Host __HOST__;
+        proxy_set_header X-Real-IP __REMOTE_ADDR__;
+        proxy_set_header X-Forwarded-For __PROXY_ADD_X_FORWARDED_FOR__;
+        proxy_set_header X-Forwarded-Proto __SCHEME__;
+        proxy_set_header X-Forwarded-Host __PROXY_HOST__;
+        proxy_set_header X-Forwarded-Server __HOST__;
+        proxy_set_header Origin __HTTP_ORIGIN__;
+        proxy_set_header Referer __HTTP_REFERER__;
+        proxy_set_header Cookie __HTTP_COOKIE__;
+        proxy_set_header Set-Cookie __HTTP_SET_COOKIE__;
+
+        proxy_pass_request_headers on;
+
+        
+        
+
+        chunked_transfer_encoding off;
+        proxy_buffering off;
+        proxy_cache off;
+        proxy_read_timeout 24h;
     }
 
-    location = /favicon.ico { access_log off; log_not_found off; }
+    location /api {
+        proxy_pass http://app_server/api;
+        proxy_set_header Host __HOST__;
+        proxy_set_header X-Real-IP __REMOTE_ADDR__;
+        proxy_set_header X-Forwarded-For __PROXY_ADD_X_FORWARDED_FOR__;
+        proxy_set_header X-Forwarded-Proto __SCHEME__;
+        proxy_set_header X-Forwarded-Host __PROXY_HOST__;
+        proxy_set_header X-Forwarded-Server __HOST__;
+        proxy_set_header Origin __HTTP_ORIGIN__;
+        proxy_set_header Referer __HTTP_REFERER__;
+        proxy_set_header Cookie __HTTP_COOKIE__;
+        proxy_set_header Set-Cookie __HTTP_SET_COOKIE__;
+
+        proxy_pass_request_headers on;
+
+        
+        
+    }
+
+    location / {
+        proxy_pass http://app_server;
+        proxy_set_header Host __HOST__;
+        proxy_set_header X-Real-IP __REMOTE_ADDR__;
+        proxy_set_header X-Forwarded-For __PROXY_ADD_X_FORWARDED_FOR__;
+        proxy_set_header X-Forwarded-Proto __SCHEME__;
+        proxy_set_header X-Forwarded-Host __PROXY_HOST__;
+        proxy_set_header X-Forwarded-Server __HOST__;
+        proxy_set_header Origin __HTTP_ORIGIN__;
+        proxy_set_header Referer __HTTP_REFERER__;
+        proxy_set_header Cookie __HTTP_COOKIE__;
+        proxy_set_header Set-Cookie __HTTP_SET_COOKIE__;
+
+        proxy_pass_request_headers on;
+
+        
+        
+    }
+
+
+
+    location = /favicon.ico {
+        access_log off;
+        log_not_found off;
+    }
 }
 
    
@@ -58,10 +123,9 @@ server {
     location / {
         # Attempt to serve the requested file directly,
         # or redirect to index.html if not found
-        root /usr/share/nginx/html;
         index index.html index.htm;
 
-        try_files $uri $uri/ /index.html;
+    
     }
 
 }
