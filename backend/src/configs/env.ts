@@ -22,6 +22,8 @@ const SECRET =
 
 const CHAT_PARAMETERS = process.env.CHAT_PARAMETERS || "";
 
+const CHAT_GPT_MODEL = process.env.CHAT_GPT_MODEL || "gpt-3.5-turbo";
+
 export {
   PORT,
   OPENAI_KEY,
@@ -31,4 +33,5 @@ export {
   SECRET,
   REACT_CLIENT_URL,
   CHAT_PARAMETERS,
+  CHAT_GPT_MODEL,
 };

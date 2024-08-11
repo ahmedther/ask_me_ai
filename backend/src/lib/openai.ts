@@ -1,5 +1,5 @@
 import { OpenAI } from "openai";
-import { OPENAI_KEY } from "../configs/env";
+import { CHAT_GPT_MODEL, OPENAI_KEY } from "../configs/env";
 import { ChatCompletionMessageParam } from "openai/resources";
 
 const openai = new OpenAI({
@@ -10,7 +10,7 @@ export const createStream = async (
   messages: Array<ChatCompletionMessageParam>
 ) => {
   return openai.beta.chat.completions.stream({
-    model: "gpt-3.5-turbo",
+    model: CHAT_GPT_MODEL,
     // model: "gpt-4o",
     messages: messages,
     stream: true,

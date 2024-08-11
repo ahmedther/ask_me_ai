@@ -3,7 +3,7 @@
 #If there are any errors, it will output them and the script will exit due to the set -e command, which causes the script to stop on any error.
 set -e
 
-# touch /etc/nginx/conf.d/default.conf 
+touch /etc/nginx/conf.d/default.conf 
 
 envsubst < /etc/nginx/default.conf.tpl > /etc/nginx/conf.d/default.conf
 sed -i 's/__HOST__/$host/g' /etc/nginx/conf.d/default.conf

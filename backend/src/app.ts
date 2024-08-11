@@ -9,8 +9,6 @@ const app = express();
 
 app.set("trust proxy", 1);
 
-console.log("[REDISH HOTED HERE:]", REDIS_HOST);
-
 app.use(corsOptions);
 
 app.use(jwtMiddleware);
