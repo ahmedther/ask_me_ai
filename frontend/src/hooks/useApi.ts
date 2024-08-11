@@ -1,27 +1,22 @@
-import axios from "axios";
-import { API_URL } from "../configs/configs";
 import { useDispatch } from "react-redux";
+import { useCallback } from "react";
+import { postQuestion } from "../api/api";
+import { createEventSource } from "../api/sse";
+
 import {
   updateAnswer,
   updateResponsePending,
 } from "../store/conversationSlice";
-import { useCallback } from "react";
 
 const useApi = () => {
   const dispatch = useDispatch();
 
   const reqAnswer = useCallback(
     async (id: string, question: string) => {
-      const eventSource = new EventSource(`${API_URL}/sse`, {
-        withCredentials: true,
-      });
+      const eventSource = createEventSource();
 
       eventSource.onopen = async () => {
-        await axios.post(
-          `${API_URL}/api/question`,
-          { content: question },
-          { withCredentials: true }
-        );
+        await postQuestion(question);
       };
 
       eventSource.onmessage = ({ data }) => {
