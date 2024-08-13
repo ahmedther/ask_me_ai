@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deployment
+  labels:
+    app: ask-me-ai
+    tier: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ask-me-ai
+      tier: redis
+  template:
+    metadata:
+      labels:
+        app: ask-me-ai
+        tier: redis
+    spec:
+      containers:
+        - name: redis
+          image: ahmedther/ask-me-ai:redis-latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1

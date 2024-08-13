@@ -3,7 +3,7 @@ services:
     build:
       context: ./backend
       dockerfile: ./Dockerfile
-    image: ask_me_backend_image
+    image: ahmedther/ask-me-ai:backend-latest
     container_name: ask_me_backend_container
     env_file:
       - /backend/.env
@@ -14,7 +14,7 @@ services:
     build:
       context: ./
       dockerfile: ./nginx/Dockerfile
-    image: ask_me_nginx_image
+    image: ahmedther/ask-me-ai:nginx-latest
     container_name: ask_me_nginx_container
     env_file:
       - /nginx/.env
@@ -28,5 +28,5 @@ services:
     build:
       context: ./redis
       dockerfile: ./Dockerfile
-    image: ask_me_redis_image
+    image: ahmedther/ask-me-ai:redis-latest
     container_name: ask_me_redis_container

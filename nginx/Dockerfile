@@ -4,7 +4,8 @@ WORKDIR /frontend
 
 COPY ./frontend /frontend
 
-ENV VITE_API_URL=http://localhost:3000
+# ENV VITE_API_URL=http://localhost:3000
+
 
 RUN npm install && \
     npm run build

@@ -16,6 +16,8 @@ sed -i 's/__HTTP_REFERER__/$http_referer/g' /etc/nginx/conf.d/default.conf
 sed -i 's/__HTTP_COOKIE__/$http_cookie/g' /etc/nginx/conf.d/default.conf
 sed -i 's/__HTTP_SET_COOKIE__/$http_set_cookie/g' /etc/nginx/conf.d/default.conf
 
+find /usr/share/nginx/html -name '*.js' -exec sed -i 's|http://localhost:3000|'${VITE_API_URL}'|g' {} +
+
 
 # Test the Nginx configuration
 nginx -t

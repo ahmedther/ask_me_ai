@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: ask-me-ai
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ask-me-ai
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: ask-me-ai
+        tier: backend
+    spec:
+      containers:
+        - name: backend
+          image: ahmedther/ask-me-ai:backend-latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          envFrom:
+            - configMapRef:
+                name: backend-config
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
