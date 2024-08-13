@@ -2,7 +2,6 @@ import express from "express";
 import apiRoutes from "./routes/apiRoutes";
 import sseRoutes from "./routes/sseRoutes";
 import corsOptions from "./configs/cors";
-import { REDIS_HOST } from "./configs/env";
 import jwtMiddleware from "./middlewares/jwtmiddleware";
 
 const app = express();
