@@ -1,16 +1,18 @@
 #!/bin/sh
 
 
-# npm install
 
-# npm install -g pm2
-
-# npm run build
 
 
 pm2-docker start /backend/dist/server.js
 
 
+
+# npm install
+
+# npm install -g pm2
+
+# npm run build
 
 
 # npm run start
