@@ -36,7 +36,12 @@ export const postQuestion = async (question: string) => {
 };
 
 export const deleteConversation = async () => {
-  await api.delete("/api/delete-conversations");
-  localStorage.removeItem("jwtToken");
-  return { data: null };
+  try {
+    await api.delete("/api/delete-conversations");
+    localStorage.removeItem("jwtToken");
+    return { data: null };
+  } catch (error: unknown) {
+    console.error("Error deleting conversation:", error);
+    return { data: null };
+  }
 };
