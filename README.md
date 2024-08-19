@@ -41,10 +41,10 @@ Bash
 
 ```
 git clone https://github.com/ahmether/ask_me_ai.git
-cd educational-ai-for-kids
+cd ask_me_ai
 ```
 
-1.  Create a `.env` file in both the `frontend` and `backend` directories or provide environment variables in the `docker-compose.yml` file. Refer to `/backend/src/config/env.ts` and `/frontend/src/configs/configs.ts` for required variable names.
+1.  Create a `.env` file in both the `nginx` and `backend` directories or provide environment variables in the `docker-compose.yml` file. Refer to `/backend/src/config/env.ts` and `/frontend/src/configs/configs.ts` for required variable names.
 2.  Build and run the Docker containers:
 
 Bash
